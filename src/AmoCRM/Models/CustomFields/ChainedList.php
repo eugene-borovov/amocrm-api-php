@@ -4,17 +4,14 @@ declare(strict_types=1);
 
 namespace AmoCRM\Models\CustomFields;
 
-use Illuminate\Contracts\Support\Arrayable;
-use Illuminate\Contracts\Support\Jsonable;
-
-use function json_encode;
+use AmoCRM\Contracts\Support\Arrayable;
 
 /**
  * Модель вложенного списка
  *
  * @since Release Spring 2022
  */
-final class ChainedList implements Arrayable, Jsonable
+final class ChainedList implements Arrayable
 {
     /** @var int */
     private $catalogId;
@@ -69,13 +66,5 @@ final class ChainedList implements Arrayable, Jsonable
             'parent_catalog_id' => $this->getParentCatalogId(),
             'title' => $this->getTitle(),
         ];
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function toJson($options = 0)
-    {
-        return json_encode($this->toArray(), $options);
     }
 }
